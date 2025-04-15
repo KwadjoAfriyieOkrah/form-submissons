@@ -35,12 +35,13 @@
       <!---banner section----->
 
       <div class="banner-section">
-        <div class="image-silder">
+        <div class="image-slider">
           <img src="Images/WiSA Summit Flyer.jpg" alt="" />
-          <img src="Images/WiSA Summit Flyer.jpg" alt="" />
-          <img src="Images/WiSA Summit Flyer.jpg" alt="" />
-          <img src="Images/WiSA Summit Flyer.jpg" alt="" />
-          <img src="Images/WiSA Summit Flyer.jpg" alt="" />
+          <img src="Images/slider img 1.jpg" alt="" />
+          <img src="Images/slider img 6.jpg" alt="" />
+          <img src="Images/slider img 3.jpg" alt="" />
+          <img src="Images/slider img 4.jpg" alt="" />
+          <img src="Images/slider img 7.jpg" alt="" />
         </div>
       </div>
     </header>
@@ -126,6 +127,18 @@
         </div>
       </div>
     </div> 
+
+
+
+<!--The Conveners section---->
+<!-- 
+<div class="conveners-section">
+  <div class="bio-container">
+    <div class="ceo-image">
+      <img src="Images/ceo.jpg" alt="CEO Image" />
+    </div>
+  </div>
+</div> -->
 
 
     <!--Partners-bloggers-Sponsers section-->
@@ -224,18 +237,21 @@
       </div>
 
       <div class="contact-col">
-
-
-          <form action="https://formsubmit.co/4e933ce1ca119b290fdac58d8a3fe928" method="POST">
-          <!----honey pot--->
-         <input type="text" name="_honey" style="display: none;">
-         <!--- Disable Captcha-->
-         <input type="hidden" name="_captcha" value="false">
-
+        <form action="https://formsubmit.co/4e933ce1ca119b290fdac58d8a3fe928" method="POST">
+          <!-- Honey Pot & Captcha -->
+          <input type="text" name="_honey" style="display: none;">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <!-- Add These Two Lines -->
+          <input type="hidden" name="_next" value="https://kwadjoafriyieokrah.github.io/thank-you.html"> 
+          <input type="hidden" name="_template" value="basic">
+      
+          <!-- Your Existing Fields -->
           <input type="text" name="name" placeholder="Enter your name" required>
-          <input type="email"  name="email" placeholder="Enter email address" required>
+          <input type="email" name="email" placeholder="Enter email address" required>
           <textarea rows="8" name="Message" placeholder="Message" required></textarea>
           <button type="submit" class="hero-btn red-btn">Send Message</button>
+        </form>
       </div>
   </div>
 </section>
