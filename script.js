@@ -3,10 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".collapsible-form");
   const submitButton = document.getElementById("submit-button");
 
+  // Fixed URL (removed space)
   const scriptUrl =
-    " https://script.google.com/macros/s/AKfycbzPgOuXmu7SLjCwNTd38uPsw6dqZdUaTt73RGQeyZ4IQqTz8J4uYt5X1LTIJbzbmQ2NZQ/exec";
+    "https://script.google.com/macros/s/AKfycbzzg45sNLumZPhsZpWKxa2XumgJmqwQuarlJ5Kkd_QjRlgbrQwv4hG8BR68a4nF2Z4dCQ/exec";
 
-  // Toggle form visibiity
+  // Toggle form visibility
   toggleIcon.addEventListener("click", () => {
     form.classList.toggle("expanded");
     toggleIcon.classList.toggle("rotated");
@@ -18,44 +19,50 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 
-    const formData = {
-      firstName: document.getElementById("firstname").value,
-      lastName: document.getElementById("lastname").value,
-      email: document.getElementById("email").value,
-      phone: document.getElementById("phone").value,
-      country: document.getElementById("country").value,
-      address1: document.getElementById("address1").value,
-      address2: document.getElementById("address2").value,
-      postalCode: document.getElementById("postalCode").value,
-      city: document.getElementById("city").value,
-      recommendation: document.getElementById("recommendation").value,
-    };
+    // Create FormData object from the form
+    const formData = new FormData(form);
 
-    console.log("Form data being sent:", formData);
+    // Convert FormData to URL-encoded string
+    const urlEncodedData = new URLSearchParams(formData).toString();
+
+    // Add timeout
+    const timeout = setTimeout(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = "Sign Up";
+      alert("Server is taking too long to respond. Please try again later.");
+    }, 8000);
 
     fetch(scriptUrl, {
       method: "POST",
-      body: JSON.stringify(formData),
-      headers: { "Content-Type": "application/json" },
-      mode: "no-cors",
+      body: urlEncodedData,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     })
       .then((response) => {
+        clearTimeout(timeout);
         if (!response.ok)
           throw new Error(`HTTP error! Status: ${response.status}`);
         return response.text();
       })
       .then((data) => {
-        console.log("Raw response", data);
-        alert("Success! Data submitted.");
+        console.log("Success! Response:", data);
+        alert("Thank you! Your information has been submitted successfully.");
         form.reset();
-
         form.classList.remove("expanded");
         toggleIcon.classList.remove("rotated");
       })
-
       .catch((error) => {
         console.error("Error:", error);
-        alert(`Failed: ${error.message}`);
+        alert(
+          `Submission failed: ${
+            error.message || "Please check your connection and try again."
+          }`
+        );
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = "Sign Up";
       });
   });
 });
