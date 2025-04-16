@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fixed URL (removed space)
   const scriptUrl =
-    "https://script.google.com/macros/s/AKfycbzzg45sNLumZPhsZpWKxa2XumgJmqwQuarlJ5Kkd_QjRlgbrQwv4hG8BR68a4nF2Z4dCQ/exec";
+    "https://script.google.com/macros/s/AKfycbwca2nIGBfDN29C9Y3XhALy1MxnXwQrHj4yYzuNx1-bKTkxqBMcAC2SdA7NbsNhIORV/exec";
 
   // Toggle form visibility
   toggleIcon.addEventListener("click", () => {
