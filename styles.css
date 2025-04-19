@@ -55,7 +55,7 @@ body {
 }
 
 .donate:hover {
-  color: #0056b3; /* Darker blue on hover */
+  color: blue; /* Darker blue on hover */
   transform: scale(1.1); /* Slight zoom effect */
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
@@ -67,20 +67,21 @@ body {
 }
 
 .donate:hover {
-  color: #0056b3; /* Darker blue on hover */
+  background-color: orange; /* Darker blue on hover */
   transform: scale(1.1); /* Slight zoom effect */
 }
 
 /*banner section*/
-/* ===== Base Styles ===== */
+
 .banner-section {
   width: 100%;
-  height: 70vh; /* Responsive height */
-  max-height: 600px; /* Limit on large screens */
-  min-height: 300px; /* Minimum for mobile */
+  height: 90vh; /* Slightly taller for better visibility */
+  max-height: 800px; /* More space for larger screens */
+  min-height: 400px; /* Better minimum for mobile */
   overflow: hidden;
   position: relative;
-  background-color: #f5f5f5;
+  background-color: #fff; /* Neutral background */
+  box-sizing: border-box;
 }
 
 .image-slider {
@@ -95,133 +96,211 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: scale-down;
+  object-position: center center;
   opacity: 0;
-  animation: slideFade 30s infinite;
-  transform: scale(1.03); /* Subtle zoom effect */
-  transition: all 1s ease;
-  -webkit-backface-visibility: hidden;
+  transform: scale(1); /* Subtle zoom effect */
+  transition: all 1.5s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth easing */
+  filter: brightness(0.95); /* Slightly muted when not active */
 }
 
-/* ===== Animation Timing ===== */
-/* Each image displays for 6 seconds with 1s fade */
-@keyframes slideFade {
+/* Enhanced animation with smooth fade and zoom */
+@keyframes professionalSlide {
   0% {
     opacity: 0;
-    transform: scale(1.03);
+    transform: scale(1);
   }
   5% {
     opacity: 1;
     transform: scale(1);
-  } /* Fade in + zoom adjust */
+  }
   20% {
     opacity: 1;
     transform: scale(1);
-  } /* Hold visible */
+  }
   25% {
     opacity: 0;
-    transform: scale(1.03);
-  } /* Fade out */
+    transform: scale(1.01);
+  }
   100% {
     opacity: 0;
+    transform: scale(1.1);
   }
 }
 
-/* Stagger animations for 6 images */
+/* Individual image timing for 6 images (30s total cycle) */
 .image-slider img:nth-child(1) {
-  animation-delay: 0s;
+  animation: professionalSlide 30s infinite;
 }
 .image-slider img:nth-child(2) {
-  animation-delay: 5s;
+  animation: professionalSlide 30s infinite 5s;
 }
 .image-slider img:nth-child(3) {
-  animation-delay: 10s;
+  animation: professionalSlide 30s infinite 10s;
 }
 .image-slider img:nth-child(4) {
-  animation-delay: 15s;
+  animation: professionalSlide 30s infinite 15s;
 }
 .image-slider img:nth-child(5) {
-  animation-delay: 20s;
+  animation: professionalSlide 30s infinite 20s;
 }
 .image-slider img:nth-child(6) {
-  animation-delay: 25s;
+  animation: professionalSlide 30s infinite 25s;
 }
 
-/* ===== Responsive Breakpoints ===== */
-@media (max-width: 768px) {
-  /* Tablets */
+/* Responsive adjustments */
+@media (max-width: 1200px) {
   .banner-section {
-    height: 50vh;
-    max-height: 400px;
+    height: 150vh;
+    max-height: 700px;
+  }
+}
+
+@media (max-width: 992px) {
+  .banner-section {
+    height: 100vh;
+    max-height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Logo & Donate Section */
+  .logo-donate-section {
+    flex-direction: column;
+    padding: 15px 10px;
+    align-items: center;
   }
 
-  @keyframes slideFade {
+  .logo-donate-section a img {
+    width: clamp(120px, 50vw, 180px); /* Fluid logo sizing */
+    margin-bottom: 15px;
+  }
+
+  .donate {
+    font-size: clamp(14px, 4vw, 18px); /* Fluid font sizing */
+    padding: 10px 10px;
+    margin: 0;
+    width: 50%; /* Better button sizing */
+    text-align: center;
+  }
+
+  /* Banner Section */
+  .banner-section {
+    height: 70vh;
+    max-height: 500px;
+    min-height: 300px;
+  }
+
+  .image-slider img {
+    object-fit: cover; /* Better mobile display */
+    object-position: center center;
+  }
+
+  /* Animation Adjustments for Mobile */
+  @keyframes professionalSlide {
     0% {
       opacity: 0;
+      transform: scale(1);
     }
-    8% {
+    5% {
       opacity: 1;
-    } /* Faster fade on mobile */
+      transform: scale(1);
+    }
     20% {
       opacity: 1;
+      transform: scale(1);
     }
-    28% {
+    25% {
       opacity: 0;
+      transform: scale(1.01);
     }
     100% {
       opacity: 0;
+      transform: scale(1);
     }
   }
+
+  /* Slider Timing Adjustments */
+  .image-slider img:nth-child(1) {
+    animation: professionalSlide 24s infinite;
+  }
+  .image-slider img:nth-child(2) {
+    animation: professionalSlide 24s infinite 4s;
+  }
+  .image-slider img:nth-child(3) {
+    animation: professionalSlide 24s infinite 8s;
+  }
+  /* Slider Timing Adjustments */
+  .image-slider img:nth-child(1) {
+    animation: professionalSlide 24s infinite;
+  }
+  .image-slider img:nth-child(2) {
+    animation: professionalSlide 24s infinite 4s;
+  }
+  .image-slider img:nth-child(3) {
+    animation: professionalSlide 24s infinite 8s;
+  }
 }
 
-@media (max-width: 480px) {
-  /* Mobile */
-  .banner-section {
-    height: 40vh;
-    min-height: 250px;
-  }
-
-  .image-slider img {
-    object-position: center top; /* Focus on upper image area */
-  }
-}
-/* Medium screens (tablets, 768px and below) */
+/* Alternative: Use different images for mobile */
 @media (max-width: 768px) {
-  .banner-section {
-    height: 300px;
-    border-radius: 0;
+  .image-slider img.mobile-version {
+    display: block;
   }
-
-  .image-slider img {
-    object-position: center top; /* Focus on top portion of image */
+  .image-slider img.desktop-version {
+    display: none;
   }
 }
 
 @media (max-width: 576px) {
   .banner-section {
-    height: 250px;
+    height: 100vh;
+    min-height: 300px;
   }
 
-  /* Slower animation for mobile */
   .image-slider img {
-    animation-duration: 30s;
+    object-position: top left;
+  }
+
+  .image-slider img:nth-child(1) {
+    object-position: 20% center; /* Adjust for important content */
+  }
+  .image-slider img:nth-child(2) {
+    object-position: right top;
+  }
+
+  @keyframes professionalSlide {
+    0% {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+    5% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0;
+      transform: scale(1.01);
+    }
+  }
+}
+
+@media (max-width: 540px) {
+  .banner-section {
+    height: 90vh;
+    min-height: 200px;
   }
 }
 
 @media (max-width: 480px) {
-  .banner-section {
-    height: 200px;
-  }
-
   @media (max-width: 768px) {
     .logo-donate-section a img {
       width: 120px; /* Slightly smaller width for medium screens */
     }
-  }
-
-  .banner-section {
-    height: 300px; /* Adjust banner height for medium screens */
   }
 
   .donate {
@@ -230,74 +309,39 @@ body {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+  .logo-donate-section a img {
+    width: clamp(100px, 45vw, 150px);
+  }
+
+  .donate {
+    padding: 8px 16px;
+    width: 50%;
+  }
   .banner-section {
-    height: 180px;
-  }
-
-  /* Simplify to 3 images for very small screens */
-  .image-slider img:nth-child(n + 4) {
-    display: none;
-  }
-
-  .image-slider img {
-    animation-duration: 24s;
-  }
-
-  .image-slider img:nth-child(1) {
-    animation-delay: 0s;
-  }
-  .image-slider img:nth-child(2) {
-    animation-delay: 8s;
-  }
-  .image-slider img:nth-child(3) {
-    animation-delay: 16s;
+    height: 60vh;
+    min-height: 250px;
   }
 }
 
-/* Small screens (mobile devices, 480px and below) */
-@media (max-width: 480px) {
-  body {
-    font-size: 12px; /* Smaller font size for small screens */
-  }
-
+/* Extra Small Screens (344px and below) */
+@media (max-width: 344px) {
   .logo-donate-section {
-    flex-direction: column; /* Stack logo and donate button vertically */
-    align-items: center; /* Center align the logo */
+    padding: 10px 8px;
   }
 
   .logo-donate-section a img {
-    width: 150px; /* Increase the width of the logo */
-    height: auto; /* Maintain aspect ratio */
-    margin-bottom: 10px; /* Add spacing below the logo */
+    width: 90px;
+  }
+
+  .donate {
+    font-size: 13px;
+    padding: 6px 12px;
   }
 
   .banner-section {
-    height: 200px; /* Adjust banner height for small screens */
-  }
-
-  .donate {
-    font-size: 18px; /* Increase font size for better visibility */
-    padding: 12px 24px; /* Add more padding for a larger button */
-    background-color: #2bb358; /* Ensure the background color is visible */
-    color: #fff; /* Ensure the text color contrasts well */
-    border-radius: 8px; /* Add more rounded corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhance the shadow for better visibility */
-  }
-
-  .donate:hover {
-    background-color: #24994a; /* Slightly darker green on hover */
-    transform: scale(1.1); /* Slight zoom effect on hover */
-  }
-
-  .logo-donate-section {
-    flex-direction: column; /* Stack logo and donate button vertically */
-    align-items: center;
-  }
-
-  .donate {
-    margin-right: 0; /* Remove right margin */
-    margin-top: 10px; /* Add top margin */
+    height: 55vh;
+    min-height: 200px;
   }
 }
 
@@ -324,12 +368,16 @@ body {
   color: #333; /* Neutral text color */
 }
 
+.mission-vision h5 {
+  color: #24994a;
+}
+
 .mission-vision h2 {
   font-family: "Open Sans", sans-serif; /* Use a clean font */
   font-size: 20px; /* Adjust font size for headings */
   font-weight: bold; /* Make headings bold */
   margin-bottom: 10px; /* Add spacing below headings */
-  color: #2bb358; /* Add a distinct color for the headings */
+  color: orange; /* Add a distinct color for the headings */
 }
 
 .mission-vision p {
@@ -358,7 +406,7 @@ body {
   min-height: 46px; /* Slightly reduced height */
   width: 320px; /* Increased fixed width */
   padding: 0 24px; /* Balanced horizontal padding */
-  background-color: #2bb358;
+  background-color: orange;
   color: white;
   border-radius: 5px;
   cursor: pointer;
@@ -367,7 +415,7 @@ body {
 }
 
 .title-container:hover {
-  background-color: #3367d6;
+  background-color: green;
 }
 
 .title-container .title {
@@ -433,7 +481,7 @@ textarea {
 }
 
 button {
-  background-color: #4285f4;
+  background-color: green;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -443,7 +491,7 @@ button {
 }
 
 button:hover {
-  background-color: #3367d6;
+  background-color: orange;
 }
 
 /* Message Styling */
@@ -947,13 +995,10 @@ footer {
 
 .I-list.social-icons {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block; /* Change from flex to block */
 }
 
 .I-list.social-icons .heading {
-  text-align: center;
   width: 100%;
   margin-bottom: 15px;
   position: relative;
@@ -961,29 +1006,34 @@ footer {
 
 .I-list.social-icons ul {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: row; /* Explicit horizontal layout */
+  flex-wrap: nowrap; /* Prevent line breaks */
+  justify-content: flex-start; /* Align left */
+  align-items: center; /* Vertical center */
+  gap: 15px; /* Space between icons */
   padding: 0;
   margin: 0;
-  width: 100%;
+  list-style: none;
+  overflow: visible; /* Ensure no clipping */
 }
 
 .I-list.social-icons li {
-  list-style: none;
-  text-align: center;
+  display: inline-block; /* Fallback for older browsers */
   margin: 0;
+  padding: 0;
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .I-list.social-icons .fa {
   font-size: 1.8rem;
-  display: block;
-  margin: 0 auto;
+  color: #555;
+  min-width: 30px; /* Prevent size fluctuations */
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* Remove default list styling */
-.I-list.social-icons li {
-  list-style: none;
-  margin: 0;
+.square {
+  overflow: hidden;
 }
 
 .contact {
@@ -1013,12 +1063,42 @@ footer {
   position: fixed;
   bottom: 0; /* Align it to the bottom of the screen */
   left: 0;
-  background-color: #202685; /* Dark background for copyright */
+  background-color: orange; /* Dark background for copyright */
   color: #fff;
-  text-align: center;
+  font-size: 1rem;
+  font-family: "open-sans", sans-serif;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
   padding: 15px 0;
   width: 100%;
   margin-top: auto; /* Pushes it to the bottom */
+}
+
+.copy .right {
+  text-align: center;
+  place-content: center;
+  margin-right: 10px;
+}
+
+.copy span {
+  font-size: 0.9rem;
+  color: #e7e7e7e0;
+  margin: auto;
+  padding-top: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: faded;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .I-list.social-icons ul {
+    justify-content: center; /* Center on mobile if needed */
+    overflow-x: auto; /* Enable horizontal scroll if space is tight */
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 5px; /* Space for scrollbar */
+  }
 }
 
 /* Responsive adjustments */
@@ -1127,12 +1207,13 @@ footer {
   }
 
   .contact {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding-top: 12px;
   }
 
   .copy {
-    margin-top: 20px;
-    padding: 12px 0;
+    margin-top: 25px;
+    padding: 10px 0;
     font-size: 0.9rem;
   }
 }
@@ -1173,7 +1254,7 @@ footer {
     line-height: 40px;
     font-size: 15px;
     bottom: 25px;
-    right: 12px;
+    right: 15px;
   }
 }
 
@@ -1184,11 +1265,23 @@ footer {
     line-height: 36px;
     font-size: 14px;
     bottom: 20px;
-    right: 10px;
+    right: 20px;
   }
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 80px; /* Adds space at bottom to prevent content hiding */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-bottom: 80px; /* Adds space at bottom to prevent content hiding */
+  }
+}
+
+@media (min-width: 360px) {
   body {
     padding-bottom: 80px; /* Adds space at bottom to prevent content hiding */
   }
