@@ -152,6 +152,9 @@ body {
 .image-slider img:nth-child(8) {
   animation-delay: 42s;
 }
+.image-slider img:nth-child(9) {
+  animation-delay: 48s;
+}
 
 /* Responsive adjustments */
 @media (max-width: 1200px) {
@@ -201,7 +204,7 @@ body {
 
   .image-slider img {
     object-fit: cover; /* Better mobile display */
-    object-position: center center;
+    object-position: center;
   }
 }
 
@@ -219,7 +222,7 @@ body {
   }
 
   .image-slider img {
-    animation-duration: 32s;
+    animation-duration: 36s;
   }
 
   .image-slider img:nth-child(2) {
@@ -242,6 +245,9 @@ body {
   }
   .image-slider img:nth-child(8) {
     animation-delay: 28s;
+  }
+  .image-slider img:nth-child(9) {
+    animation-delay: 32s;
   }
 }
 
